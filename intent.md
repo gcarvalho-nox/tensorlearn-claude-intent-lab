@@ -37,7 +37,7 @@ Sources: approved PRD N-17 (`inputs/01-approved-prd.md`), discovery notes (`inpu
 
 ## Constraints
 
-- **C-1** A doctor must review and release the result before any notification is eligible; laboratory upload completion is a precondition but never enough on its own. (Review and release: PRD; discovery notes, product owner. Upload as a precondition: our reading, not stated as a gate in the sources.)
+- **C-1** A doctor must review and release the result before any notification is eligible. Laboratory upload completion does not make a result ready. (PRD; discovery notes, product owner)
 - **C-2** No diagnosis, test result, clinical measurement or treatment detail in the message, the notification logs or operational logs. (PRD; discovery notes, privacy owner)
 - **C-3** Access to the result is authenticated in the existing portal. No result attachments and no public result link. (PRD)
 - **C-4** No duplicate notifications for the same released result version. (PRD)
@@ -53,7 +53,7 @@ Sources: approved PRD N-17 (`inputs/01-approved-prd.md`), discovery notes (`inpu
 
 ```json
 {
-  "notifyWhen": ["lab-upload-complete", "doctor-reviewed", "released"],
+  "notifyWhen": ["doctor-reviewed", "released"],
   "messageMayInclude": ["update-available"],
   "inScope": ["existing-portal-route", "duplicate-prevention", "delivery-failure-handling"],
   "openDecisions": [
